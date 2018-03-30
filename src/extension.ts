@@ -8,7 +8,7 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {
 }
 
-async function promptForArg(context: vscode.ExtensionContext): Promise<string> {
+async function promptForArg(context: vscode.ExtensionContext): Promise<string[]> {
     let options: vscode.InputBoxOptions = {
         prompt: "Argument: ",
         placeHolder: ""
@@ -16,6 +16,6 @@ async function promptForArg(context: vscode.ExtensionContext): Promise<string> {
     
     return vscode.window.showInputBox(options)
         .then(value => {
-            return value;
+            return value.split(" ")
         });
 }
